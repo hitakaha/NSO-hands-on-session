@@ -27,7 +27,7 @@ classification: "Cisco Confidential"
 
 !!! warning "NSO version difference"
 <!-- lint-allow-hardcoded-version -->
-    Labs 1–9 use NSO **{{ nso_version }}**. This lab and Lab 11 require **NSO 6.7 LTS**, which is the version bundled in the dCloud "NSO 6.7 MCP" scenario. Commands and paths in this chapter reference `NSO-6.7-LTS-free/` explicitly because MCP is only available from 6.7 onward.
+    Labs 1–9 use NSO 6.5. This lab and Lab 11 require **NSO 6.7 LTS**, which is the version bundled in the dCloud "NSO 6.7 MCP" scenario. Commands and paths in this chapter reference `NSO-6.7-LTS-free/` explicitly because MCP is only available from 6.7 onward.
 
 ## Learning Objectives
 
