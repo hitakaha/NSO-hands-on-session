@@ -89,8 +89,8 @@ Pages are deployed to the `gh-pages` branch using `mike` for versioned documenta
 ## Repository Layout
 
 ```text
-docs/                        Markdown source (9 labs + index + support pages)
-  assets/images/             Screenshots per lab (lab01/ … lab09/)
+docs/                        Markdown source (11 labs + index + support pages)
+  assets/images/             Screenshots per lab (lab01/ … lab11/)
   assets/images/mermaid/     Pre-rendered topology diagrams (SVG + PNG)
   assets/mermaid-sources/    Mermaid .mmd sources
   assets/fonts/              Bundled fonts for offline rendering

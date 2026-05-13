@@ -87,6 +87,22 @@ _JOURNEY_LABS: tuple[dict[str, object], ...] = (
         "desc": "Users, authgroups, NACM rules",
         "intentional": False,
     },
+    {
+        "n": 10,
+        "file": "10-nso-mcp-setup.md",
+        "title": "NSO MCP — Setup and First Client",
+        "min": 45,
+        "desc": "NSO 6.7 + MCP server, web client, policy permit",
+        "intentional": False,
+    },
+    {
+        "n": 11,
+        "file": "11-nso-mcp-services-bgp.md",
+        "title": "NSO MCP — Service Models and BGP",
+        "min": 40,
+        "desc": "Load bgpmgr, configure BGP via natural language",
+        "intentional": False,
+    },
 )
 
 _DURATION_RE = re.compile(r"^(\d+)\s*min$")
@@ -318,12 +334,13 @@ def define_env(env):
         else:
             time_s = f"{m} min"
         ver = str(extra.get("nso_version") or "").strip() or "—"
-        aria = f"About {time_s} total, 9 labs, NSO {ver} sandbox"
+        lab_count = len(_JOURNEY_LABS)
+        aria = f"About {time_s} total, {lab_count} labs, NSO {ver} sandbox"
         return (
             f'<div class="css-home-meta" role="group" aria-label="{escape(aria, quote=True)}">'
             f'<span class="css-home-meta__item"><strong>Time</strong> ~{escape(time_s)} total</span>'
             f'<span class="css-home-meta__sep" aria-hidden="true">·</span>'
-            f'<span class="css-home-meta__item"><strong>Labs</strong> 9 hands-on</span>'
+            f'<span class="css-home-meta__item"><strong>Labs</strong> {lab_count} hands-on</span>'
             f'<span class="css-home-meta__sep" aria-hidden="true">·</span>'
             f'<span class="css-home-meta__item"><strong>NSO</strong> {escape(ver)} (sandbox)</span>'
             f"</div>"
