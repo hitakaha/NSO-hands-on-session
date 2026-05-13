@@ -274,3 +274,9 @@ echo "show configuration nacm nacm rule-list read_rule" | ncs_cli -u admin -C
 {{ common_errors_end() }}
 
 If you lock yourself out or rules conflict, log in as **admin** and revert the last **NACM** commits in **Commit Manager**.
+
+## What's Next
+
+Lab 9 closes the **Day 2 morning** track: you now have NSO operating with proper user, authgroup, and NACM separation — the foundation a production deployment needs.
+
+The **Day 2 afternoon** session shifts to **NSO 6.7** and its new **Model Context Protocol (MCP) server**. In [Lab 10: NSO MCP — Setup and First Client](10-nso-mcp-setup.md), you will spin up NSO 6.7 in the dCloud "NSO 6.7 MCP" scenario, expose it via MCP, and drive it from a web-based natural-language client — then in [Lab 11](11-nso-mcp-services-bgp.md), use that same client to configure BGP through a custom service package.
