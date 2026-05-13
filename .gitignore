@@ -18,3 +18,6 @@ venv/
 
 # Generated workbook asset extractions (regenerate with scripts/extract_*.py)
 build/
+
+# Source reference materials (DOCX/PDF originals — not part of the manual source)
+references/
