@@ -114,6 +114,8 @@ nav:
     - 7. Device Groups & Templates: 07-device-groups-templates.md
     - 8. Create a Service: 08-create-service.md
     - 9. RBAC Access Control: 09-rbac-access-control.md
+    - 10. NSO MCP — Setup and First Client: 10-nso-mcp-setup.md
+    - 11. NSO MCP — Service Models and BGP: 11-nso-mcp-services-bgp.md
 
 extra:
   version:

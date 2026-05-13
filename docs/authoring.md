@@ -125,7 +125,7 @@ Do not call `lab_safety` on labs 01–07 or 09. **Lint rules 3d and 11** enforce
 | Macro | Role |
 |-------|------|
 | `home_subtitle(text="…")` | One-line audience line directly under the H1. |
-| `home_meta()` | Meta row: total time (from journey data), 9 labs, NSO version from `mkdocs.yml` `extra.nso_version`. |
+| `home_meta()` | Meta row: total time and lab count (both derived from the journey-data tuple), NSO version from `mkdocs.yml` `extra.nso_version`. |
 | `journey_table()` | Accessible `<table>` with caption; Lab 8 row includes an **intentional break** chip with visible text. |
 
 **Order (required):** H1 headline → `home_subtitle` → `home_meta` → `lab_safety(general)` → `topology` → `journey_table`. No generic “welcome to…” copy. **Lint rule 3f** enforces the macros and a single H1.
