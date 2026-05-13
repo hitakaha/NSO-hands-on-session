@@ -2,7 +2,7 @@
 
 Cisco Network Services Orchestrator (NSO) — Hands-On Lab Guide built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
 
-Nine self-paced labs walk learners from first connection through service lifecycle and RBAC, all driven from the NSO Web UI and CLI on a hosted XRd lab environment.
+Eleven self-paced labs walk learners from first connection through service lifecycle and RBAC, then into an NSO 6.7 **Model Context Protocol (MCP)** afternoon track — all driven from the NSO Web UI, CLI, and a natural-language MCP client on a hosted XRd lab environment.
 
 | Lab | Topic |
 |-----|-------|
@@ -15,6 +15,14 @@ Nine self-paced labs walk learners from first connection through service lifecyc
 | 7 | Device Groups & Templates |
 | 8 | Create a Service |
 | 9 | RBAC Access Control |
+| 10 | NSO MCP — Setup and First Client |
+| 11 | NSO MCP — Service Models and BGP |
+
+## Contributors
+
+- David Quezada
+- Jorge Mira
+- Hirotsugu Takahashi
 
 ## Prerequisites
 
