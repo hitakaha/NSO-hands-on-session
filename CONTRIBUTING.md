@@ -43,10 +43,58 @@ Shared install steps live in **`.github/actions/setup-toolchain`**; the full job
 
 ### Cutting a release (Story 6.9, FR35/FR36)
 
-1. Ensure **`main`** is green (**`build.yml`**).
-2. Create an annotated or lightweight tag: **`git tag v0.4.0`** and **`git push origin v0.4.0`** (semver after **`v`**).
-3. **`release.yml`** builds notes from **`git log`** since the previous tag, attaches **`release-checklist-{tag}.md`** and the learner PDF, and updates **`CHANGELOG.md`** on **`main`** (requires **`contents: write`** and a **`main`** branch that allows the GitHub Actions bot to push — adjust branch protection if needed).
-4. Rollback: **`docs/_internal/rollback.md`**.
+The release process is **tag-driven**. Pushing a `v*` tag is the only manual step — everything else is automated by **`release.yml`**.
+
+#### Versioning policy
+
+- **`main`** = rolling current manual; deploys to `gh-pages` under the **`main`** alias (via **`deploy.yml`**).
+- **`v*` tags** = frozen versioned releases; served by **`mike`** with the in-site version switcher.
+- Use **semver** after the `v`: `vMAJOR.MINOR.PATCH` (e.g., `v1.0.0`, `v1.1.0`, `v1.0.1`).
+  - **MAJOR** — incompatible content reorganization or NSO version jump that breaks lab continuity.
+  - **MINOR** — new chapters, labs, or sections; backwards-compatible content additions.
+  - **PATCH** — typo fixes, clarifications, errata to an already-published version.
+- For hotfixes to a published version: cherry-pick the fix onto **`main`** and tag the next patch (e.g., `v1.0.1`). No maintenance branch is needed unless `main` has diverged incompatibly from the published version.
+
+#### Step-by-step
+
+1. **Pre-flight on `main`:**
+   - **`main`** is green on **`build.yml`** (latest run on the merge commit succeeded).
+   - **`_data/versions.yaml`** `nso_version` matches the NSO release this manual targets (update + merge to `main` first if not).
+   - **`CHANGELOG.md`** is in a sane state (the workflow will append to it; it does not rewrite history).
+2. **Decide the version number** per the policy above. Confirm it does not already exist:
+   ```bash
+   git fetch --tags origin
+   git tag -l | grep -E '^v[0-9]'
+   ```
+3. **Tag and push** (annotated tags preferred so the release notes carry a meaningful message):
+   ```bash
+   git tag -a v1.1.0 -m "Release v1.1.0 — <short description>"
+   git push origin v1.1.0
+   ```
+4. **Watch `release.yml`:**
+   ```bash
+   gh run list --workflow=release.yml --limit 3
+   gh run watch
+   ```
+   The workflow runs the full **`ci`** job first (Story **6.9 AC6** — no publish if CI fails). On success it:
+   - Generates release notes from `git log` since the previous tag.
+   - Runs **`mike deploy <tag>`** and **`mike set-default <tag>`** on **`gh-pages`** (adds the version to the site switcher and makes it the default).
+   - Creates a **GitHub Release** with the learner PDF and **`release-checklist-{tag}.md`** attached.
+   - Commits the updated **`CHANGELOG.md`** back to **`main`** (requires **`contents: write`** and a `main` branch that allows the Actions bot to push — adjust branch protection if needed).
+5. **Verify** on the published site that the new version appears in the switcher and that the GitHub Release has the PDF attached.
+
+#### If something goes wrong
+
+- **Workflow validation error** (e.g., permissions): fix the workflow on **`main`**, then **retag** on the new commit:
+  ```bash
+  git push origin :refs/tags/v1.1.0   # delete remote tag
+  git tag -d v1.1.0                   # delete local tag
+  git tag -a v1.1.0 -m "…"             # recreate at the fixed HEAD
+  git push origin v1.1.0
+  ```
+  Only safe while the release has **not** completed publishing. Once the Release and `mike` deploy are live, prefer cutting a new patch tag instead.
+- **CI fails inside `release.yml`:** the publish job is gated on `needs: ci`, so nothing is published. Fix on `main`, then retag as above.
+- **Rollback** of a published version: **`docs/_internal/rollback.md`**.
 
 ### PDF metadata (`_data/site.yaml`, Story 6.3)
 
