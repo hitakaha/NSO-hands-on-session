@@ -5,7 +5,7 @@ chapter: 10
 nso_version: "6.7"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "45 min"
+estimated_duration: "80 min"
 prerequisites:
   - "Labs 1–9 completed (Day 1 + Day 2 morning)."
   - "Access to a dCloud session for the NSO 6.7 MCP scenario (Ubuntu 24.04 Desktop reachable at 198.18.134.27)."
@@ -43,7 +43,7 @@ By the end of this lab you will be able to:
 ## Time Budget
 
 <!-- lint-allow-hardcoded-version -->
-{{ time_budget(total=45, segments=[[5,"What is MCP?"],[10,"Setup NSO 6.7"],[12,"Install MCP package"],[10,"Run web client"],[8,"Change policy"]]) }}
+{{ time_budget(total=80, segments=[[8,"What is MCP?"],[20,"Setup NSO 6.7"],[20,"Install MCP package"],[18,"Run web client"],[14,"Change policy"]]) }}
 
 ## Prerequisites
 

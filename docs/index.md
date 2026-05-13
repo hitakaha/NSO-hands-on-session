@@ -4,7 +4,7 @@ hide:
 classification: "Cisco Confidential"
 ---
 
-# ~5 hours, 11 labs — build an NSO service that survives real drift, then drive NSO with natural language
+# ~6 hours, 11 labs — build an NSO service that survives real drift, then drive NSO with natural language
 
 {{ home_subtitle(text="For network engineers and automation leads working through a guided Cisco NSO hands-on lab with XRd peers — now extended with an NSO 6.7 MCP afternoon track.") }}
 

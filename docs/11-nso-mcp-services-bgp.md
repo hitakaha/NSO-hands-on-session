@@ -5,7 +5,7 @@ chapter: 11
 nso_version: "6.7"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "40 min"
+estimated_duration: "70 min"
 prerequisites:
   - "Lab 10: NSO MCP — Setup and First Client completed."
   - "NSO MCP server running on the dCloud Ubuntu host with policy default-action set to permit."
@@ -37,7 +37,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=40, segments=[[10,"Load bgpmgr package"],[8,"Inspect MCP tools"],[15,"Configure BGP via MCP"],[7,"Analyze with ollmcp"]]) }}
+{{ time_budget(total=70, segments=[[18,"Load bgpmgr package"],[12,"Inspect MCP tools"],[28,"Configure BGP via MCP"],[12,"Analyze with ollmcp"]]) }}
 
 ## Prerequisites
 
