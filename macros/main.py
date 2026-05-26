@@ -77,7 +77,7 @@ _JOURNEY_LABS: tuple[dict[str, object], ...] = (
         "title": "Create a Service",
         "min": 30,
         "desc": "Python-and-template service package",
-        "intentional": True,
+        "intentional": False,
     },
     {
         "n": 9,
@@ -85,7 +85,7 @@ _JOURNEY_LABS: tuple[dict[str, object], ...] = (
         "title": "RBAC Access Control",
         "min": 30,
         "desc": "Users, authgroups, NACM rules",
-        "intentional": False,
+        "intentional": True,
     },
     {
         "n": 10,

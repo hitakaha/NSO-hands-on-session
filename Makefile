@@ -16,8 +16,8 @@ NSO_VERSION := $(shell $(PYTHON) scripts/read_nso_version.py 2>/dev/null || echo
 LEARNER_SITE    := site
 INSTRUCTOR_SITE := site-instructor
 # Story 6.2 — canonical learner PDF artifact (FR20/FR22)
-DIST_PDF        := dist/cisco-secure-services-nso-$(NSO_VERSION).pdf
-DIST_PDF_INSTR  := dist/cisco-secure-services-nso-$(NSO_VERSION)-instructor.pdf
+DIST_PDF        := dist/cisco-nso-hands-on-training-workbook-$(NSO_VERSION).pdf
+DIST_PDF_INSTR  := dist/cisco-nso-hands-on-training-workbook-$(NSO_VERSION)-instructor.pdf
 SERVE_LEARNER_ADDR    ?= 127.0.0.1:8000
 SERVE_INSTRUCTOR_ADDR ?= 127.0.0.1:8001
 

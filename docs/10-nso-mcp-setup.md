@@ -49,7 +49,7 @@ By the end of this lab you will be able to:
 
 - [ ] [Lab 9: RBAC Access Control](09-rbac-access-control.md) completed — the Day 2 morning track is done.
 <!-- lint-allow-hardcoded-version -->
-- [ ] Your dCloud session for **NSO 6.7 MCP — Demo** is **Active** (all stages of the Launch Progress bar are green; this can take up to ~10 minutes).
+- [ ] Your dCloud session for **NSO 6.7 MCP — Demo** is **Active**.
 - [ ] You can open the **VM Console** of **Ubuntu 24.04 Desktop**.
 
 ## What is MCP?

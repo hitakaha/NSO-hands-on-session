@@ -1,5 +1,5 @@
 site_name: NSO Hands-On Adoption Workbook
-site_description: Cisco Network Services Orchestrator - Hands-On Lab Guide
+site_description: Cisco Network Services Orchestrator - Hands-On Lab Workbook
 site_author: Customer Success Specialists - Internet and Mass Scale Infrastructure
 copyright: "&copy; Cisco Confidential"
 # Public site URL — required for mike version links/redirects. Override locally: SITE_URL=http://127.0.0.1:8000/

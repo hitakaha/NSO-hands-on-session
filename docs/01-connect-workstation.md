@@ -46,10 +46,6 @@ You will use the **linux-host** Ubuntu desktop and its integrated terminal for a
 
 ![Lab portal — select the VM and open VM Console from Remote Access](assets/images/01/lab-portal-vm-console.png)
 
-3. On Windows, if you see “You’re almost done setting up your PC,” choose **Remind me in 3 days** to reach the desktop.
-
-![Windows desktop after initial setup prompt](assets/images/01/windows-desktop-setup.png)
-
 Wait until you see the desktop background and can move the pointer inside the VM.
 
 ### Step 2: Orient yourself on the desktop

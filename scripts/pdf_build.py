@@ -159,7 +159,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--output",
         default="",
-        help="Output PDF path (default: dist/cisco-secure-services-nso-{version}.pdf)",
+        help="Output PDF path (default: dist/cisco-nso-hands-on-training-workbook-{version}.pdf)",
     )
     p.add_argument("--instructor", action="store_true", help="INSTRUCTOR=1 build → site-instructor by default")
     p.add_argument("--skip-build", action="store_true", help="Assume mkdocs build already ran")
@@ -179,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
             out = REPO_ROOT / out
     else:
         suffix = "-instructor" if instructor else ""
-        out = REPO_ROOT / "dist" / f"cisco-secure-services-nso-{ver}{suffix}.pdf"
+        out = REPO_ROOT / "dist" / f"cisco-nso-hands-on-training-workbook-{ver}{suffix}.pdf"
 
     out.parent.mkdir(parents=True, exist_ok=True)
 

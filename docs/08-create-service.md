@@ -168,8 +168,10 @@ Uncommitted changes found, commit them? [yes/no/CANCEL] no
 
 The generated skeleton includes an **XML template** and a **YANG model** — you will edit both.
 
+This is what we will find in the XML file:
 ![Default STATIC-template.xml content](assets/images/lab08/vscode-xml-template-file.png)
 
+And this is what we will find on the YANG file:
 ![Default STATIC.yang content](assets/images/lab08/vscode-yang-file.png)
 
 Copy only the **`router`** subtree (inside **`<config>`**) into **`STATIC-template.xml`**:
@@ -197,18 +199,16 @@ Copy only the **`router`** subtree (inside **`<config>`**) into **`STATIC-templa
 
 ### Step 6: Add YANG variables
 
-Replace literals with service inputs. Typical leaves:
-
-1. **Destination prefix** (for example `11.11.11.11/32`)
-2. **Forwarding address** (for example `10.1.1.2`)
-3. **Metric** (default **100**)
-4. **Description** (default **`set by NSO`**)
-
 ![Four variables identified: destination prefix, forwarding address, metric, description](assets/images/lab08/slide-variables-identification.png)
 
 #### Update `STATIC-template.xml`
 
-Reference those leaves with your template engine’s variable syntax (for example `{$DEST}` / `{$CONTEXT}` patterns — follow the generated skeleton comments).
+Reference those leaves with your template engine’s variable syntax:
+
+1. **Destination prefix** (for example `11.11.11.11/32` -> `{/dest-prefix}`)
+2. **Forwarding address** (for example `10.1.1.2` -> `{/fwd-address}`)
+3. **Metric** (default **100** -> `{/metric}`)
+4. **Description** (default **`set by NSO`** -> `{/description}`)
 
 ![XML template with variable placeholders](assets/images/lab08/slide-xml-with-variables.png)
 
