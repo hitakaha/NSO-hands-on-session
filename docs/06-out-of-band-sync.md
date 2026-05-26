@@ -32,7 +32,7 @@ By the end of this lab you will be able to:
 ## Prerequisites
 
 - [ ] [Lab 5: Rollbacks](05-rollbacks.md) completed — **Check-Sync** should be **green** for **xr-1** before you start.
-- [ ] You can SSH from **linux-host** to **xr-1** (examples use **198.51.100.2** — use your lab address).
+- [ ] You can SSH from **linux-host** to **xr-1** (examples use **172.30.0.2**).
 
 ## Procedure
 
@@ -45,7 +45,8 @@ SSH to **xr-1** and configure **Loopback100** on the device CLI (not through NSO
 <!-- lint-skip: no-output -->
 
 ```bash
-ssh admin@198.51.100.2
+ssh admin@172.30.0.2
+(admin@172.30.0.2) Password: (password = cisco123)
 ```
 
 At the XR prompt, use a configuration session like this (prompts and timestamps will match your session):
@@ -150,15 +151,6 @@ show run interface Loopback 100
 % No such configuration item(s)
 ```
 
-Optional — inspect sync from the NSO CLI (output varies by release; rely on the Web UI if this is empty):
-
-<!-- lint-skip: no-output -->
-
-```bash
-source ~/NSO-INSTALL/ncsrc
-echo "show devices check-sync" | ncs_cli -u admin -C
-```
-
 ## Common Errors
 
 {{ common_errors_start() }}
@@ -176,5 +168,3 @@ echo "show devices check-sync" | ncs_cli -u admin -C
 ) }}
 
 {{ common_errors_end() }}
-
-If **sync-to** / **sync-from** loops or **check-sync** stays red with no clear diff, capture screenshots for your instructor and consider restoring the VM snapshot if time is short.

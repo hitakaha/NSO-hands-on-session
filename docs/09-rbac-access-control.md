@@ -32,7 +32,7 @@ By the end of this lab you will be able to:
 ## Prerequisites
 
 - [ ] You can log in to the NSO Web UI as **admin** and open **Configuration Editor** for **aaa**, **nacm**, and **devices**.
-- [ ] Device definitions for **xr-1** / **xr-2** use management addresses consistent with your lab (examples use **198.51.100.2** for **xr-1** in XPath samples).
+- [ ] Device definitions for **xr-1** / **xr-2** use management addresses consistent with your lab (examples use **172.30.0.2** for **xr-1** in XPath samples).
 
 ## Procedure
 
@@ -143,15 +143,15 @@ For deeper paths:
 
 ```bash
 source ~/NSO-INSTALL/ncsrc
-echo "show configuration devices device xr-1 | display xpath" | ncs_cli -u admin -C
+echo "show running-config devices device xr-1 | display xpath" | ncs_cli -u admin -C
 ```
 
 *Expected output (illustrative — addresses follow your lab):*
 
 ```text
-/devices/device[name='xr-1']/address 198.51.100.2
+/devices/device[name='xr-1']/address 172.30.0.2
 /devices/device[name='xr-1']/authgroup XR
-/devices/device[name='xr-1']/device-type/cli/ned-id cisco-iosxr-cli-7.x
+/devices/device[name='xr-1']/device-type/cli/ned-id cisco-iosxr-cli-7.69
 ```
 
 !!! info "Access operations"
@@ -233,7 +233,7 @@ Confirm **`read_user`** still exists (admin session):
 
 ```bash
 source ~/NSO-INSTALL/ncsrc
-echo "show configuration aaa authentication users user read_user" | ncs_cli -u admin -C
+echo "show running-config aaa authentication users user read_user" | ncs_cli -u admin -C
 ```
 
 {{ expected_output(landmark="read_user") }}
@@ -252,7 +252,7 @@ Confirm NACM rules in the Web UI under **Configuration Editor → nacm:nacm** �
 
 ```bash
 source ~/NSO-INSTALL/ncsrc
-echo "show configuration nacm nacm rule-list read_rule" | ncs_cli -u admin -C
+echo "show running-config nacm rule-list read_rule" | ncs_cli -u admin -C
 ```
 
 ## Common Errors

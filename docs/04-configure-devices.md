@@ -40,8 +40,6 @@ By the end of this lab you will be able to:
 
 Navigate to **xr-1** in the Web UI to inspect interface configuration. Use the search bar or expand the configuration tree.
 
-![xr-1 device detail — type config in the search bar to navigate to the configuration section](assets/images/lab04/webui-xr1-device-detail.png)
-
 Follow this path to reach the GigabitEthernet IPv4 address container:
 
 ```text
@@ -84,10 +82,10 @@ SSH to **xr-1** and confirm the interface address in running configuration.
 <!-- lint-skip: no-output -->
 
 ```bash
-ssh admin@198.51.100.2
+ssh admin@172.30.0.2
+(admin@172.30.0.2) Password: (password = cisco123)
 ```
 
-*(Use the management IP your lab assigns; `198.51.100.2` is an example documentation address.)*
 
 At the XR prompt, run:
 
@@ -121,7 +119,7 @@ From **linux-host**, confirm the committed value is visible in NSO (same shell e
 
 ```bash
 source ~/NSO-INSTALL/ncsrc
-echo "show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address" | ncs_cli -u admin -C
+echo "show running-config devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address" | ncs_cli -u admin -C
 ```
 
 {{ expected_output(landmark="10.1.1.30") }}

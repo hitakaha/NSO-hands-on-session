@@ -37,8 +37,6 @@ By the end of this lab you will be able to:
 
 ## Procedure
 
-Commands use **`{{ nso_version }}`** so they track `mkdocs.yml` `extra.nso_version`. If your lab still ships a different directory name, substitute your path **inside the command fences** only.
-
 ### Step 1: Locate the installer files
 
 Open VS Code and work in the **Terminal** panel (or any shell on **linux-host**).
@@ -139,12 +137,10 @@ Starting with **NSO {{ nso_version }}**, WebUI and RESTCONF may only allow acces
 Example (RFC 5737 documentation range — **substitute your lab IP**):
 
 ```xml
-<server-alias>198.51.100.27</server-alias>
+<server-alias>198.18.134.27</server-alias>
 ```
 
 3. Ensure the Web UI listens where you expect (often **`<transport><tcp><ip>0.0.0.0</ip>`** … under `<webui>`). If your file already has TCP/WebUI transport settings, **do not duplicate** them — only add or fix **`server-alias`** so it matches the URL you publish in Step 9.
-
-**Consistency check:** **`server-alias`** = IP in **`http://<IP>:8080/...`** (same host as NSO). It must **not** be the XRd device management IP (Lab 4 uses a **different** example address for **xr-1**).
 
 !!! warning "Security Note"
     Binding Web UI to `0.0.0.0` is for lab use only. In production, restrict access to specific interfaces.
@@ -178,7 +174,7 @@ status: started
 Open Firefox and navigate to the login URL your environment provides. Example:
 
 ```text
-http://198.51.100.27:8080/login.html
+http://198.18.134.27:8080/login.html
 ```
 
 !!! info "Default Credentials"
@@ -202,15 +198,14 @@ Navigate to the **Config Editor** section.
 
 ```bash
 cd ~/NSO-{{ nso_version }}-free/work/
-bash ../ncs-{{ nso_version }}-cisco-iosxr-7.x-freetrial.signed.bin --skip-verification
+bash ../ncs-{{ nso_version }}-cisco-iosxr-7.69-freetrial.signed.bin --skip-verification
 ```
 
-*(Replace `7.x` in the filename with the exact IOS-XR NED package name from `ls *.bin` in Step 1 if it differs.)*
 
 #### Copy the NED archive into the instance
 
 ```bash
-cp ncs-{{ nso_version }}-cisco-iosxr-*.tar.gz ~/NSO-INSTALL/nso-instance/packages/
+cp ncs-{{ nso_version }}-cisco-iosxr-69.tar.gz ~/NSO-INSTALL/nso-instance/packages/
 ```
 
 {{ expected_output(landmark="packages") }}

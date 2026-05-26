@@ -218,6 +218,28 @@ Make **`dest-prefix`** and **`fwd-address`** mandatory; give **`metric`** and **
 
 ![YANG model with leaf definitions and defaults](assets/images/lab08/slide-yang-with-variables.png)
 
+```yang
+// replace with your own stuff here
+leaf dest-prefix {
+    type inet:ipv4-prefix;
+    mandatory true;
+}
+leaf fwd-address {
+    type inet:ipv4-address;
+    mandatory true;
+}
+
+leaf metric {
+    type uint16;
+    default "100";
+}
+
+leaf description {
+    type string;
+    default "set by NSO";
+}
+```
+
 ### Step 7: Compile the package
 
 ```bash
@@ -250,7 +272,6 @@ make
 
 1. **Homepage → Services**.
 
-![Services section on the NSO homepage](assets/images/lab08/webui-services-homepage.png)
 
 2. Select the **STATIC** service.
 
@@ -321,7 +342,8 @@ On **xr-1**, confirm the static route exists after re-deploy (documentation addr
 <!-- lint-skip: no-output -->
 
 ```bash
-ssh admin@198.51.100.2
+ssh admin@172.30.0.2
+(admin@172.30.0.2) Password: (password = cisco123)
 ```
 
 ```cli

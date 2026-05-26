@@ -50,7 +50,7 @@ By the end of this lab you will be able to:
 - [ ] [Lab 9: RBAC Access Control](09-rbac-access-control.md) completed — the Day 2 morning track is done.
 <!-- lint-allow-hardcoded-version -->
 - [ ] Your dCloud session for **NSO 6.7 MCP — Demo** is **Active** (all stages of the Launch Progress bar are green; this can take up to ~10 minutes).
-- [ ] You can open the **VM Console** of **Ubuntu 24.04 Desktop** (host `198.18.134.27`, user `cisco` / `C1sco12345`).
+- [ ] You can open the **VM Console** of **Ubuntu 24.04 Desktop**.
 
 ## What is MCP?
 
@@ -80,23 +80,61 @@ In this lab, a custom **MCP client** (used later in the procedure) connects to N
 
     To fully undo the install, the simplest path in the dCloud scenario is to **end the dCloud session** and restart it — the Ansible playbook will reprovision the host.
 
-### Step 1: Open a terminal on the Ubuntu host
+### Step 1: Validate the running NSO 6.5 instance and shut it down
+
+Before moving to the new dCloud scenario you must cleanly stop the NSO 6.5 instance that has been running throughout Labs 1–9. Work on the **xrd-host** terminal you have been using all day.
+
+Source the NSO 6.5 environment and confirm the version:
+
+```bash
+source ~/NSO-INSTALL/ncsrc
+ncs --version
+```
+
+<!-- lint-allow-hardcoded-version -->
+The output must show **6.5** — this confirms the correct environment is sourced.
+
+```text
+6.5
+```
+
+Stop the NSO 6.5 daemon:
+
+```bash
+ncs --stop 2>/dev/null || true
+```
+
+Verify the daemon is no longer listening:
+
+```bash
+ncs --status
+```
+
+Expected output:
+
+```text
+connection refused (status)
+```
+
+`connection refused` means NSO 6.5 has stopped cleanly. You can now proceed to the new dCloud scenario that bundles **NSO 6.7**.
+
+---
+
+### Step 2: Open a terminal on the Ubuntu host
 
 Once the dCloud scenario is active, open the **VM Console** of **Ubuntu 24.04 Desktop**.
 
 ![dCloud VM Console launcher for Ubuntu 24.04 Desktop](assets/images/lab10/dcloud-vm-console-ubuntu.png)
 
-!!! tip "Win11 alternative"
-    You can also work from the **Win11** host (`198.18.133.100`, user `dcloud`, no password) using **TeraTerm**. Use **VM Console** rather than Web RDP — Web RDP is very slow in this scenario.
 
 On Ubuntu, open **Terminal**.
 
 <!-- lint-allow-hardcoded-version -->
-### Step 2: Install NSO 6.7 with the provided Ansible playbook
+### Step 3: Install NSO 6.7 with the provided Ansible playbook
 
 <!-- lint-skip: no-output -->
 ```bash
-cd NSO-6.7-LTS-free
+cd ~/NSO-6.7-LTS-free
 ansible-playbook nso.yml
 ```
 
@@ -111,7 +149,7 @@ source NSO-6.7/ncsrc
 ncs_cli -Cu admin
 ```
 
-### Step 3: Confirm the XRd routers are reachable
+### Step 4: Confirm the XRd routers are reachable
 
 Inside the NSO CLI, sync both XRd devices and verify they are present:
 
@@ -126,7 +164,7 @@ admin@ncs# show devices device
 
 If either device fails to sync, stop here and resolve before continuing — MCP needs a working device tree to expose meaningful tools.
 
-### Step 4: Install the NSO MCP package
+### Step 5: Install the NSO MCP package
 
 The MCP package is included in the NSO installer bundle. From the **Linux terminal** (not the NSO CLI), copy it into the packages directory:
 
@@ -146,9 +184,7 @@ admin@ncs(config)# commit
 admin@ncs(config)# end
 ```
 
-![NSO CLI showing mcp-server enabled committed in the running configuration](assets/images/lab10/nso-mcp-server-enabled.png)
-
-### Step 5: Verify the MCP server with the bundled test script
+### Step 6: Verify the MCP server with the bundled test script
 
 The MCP package contains a `test-mcp.sh` test script. Confirm MCP is up and running:
 
@@ -166,7 +202,7 @@ If any test fails, go back to the NSO CLI, run `packages reload` again, and re-r
 
 NSO MCP is now ready.
 
-### Step 6: Start the web MCP client (backend + frontend)
+### Step 7: Start the web MCP client (backend + frontend)
 
 The scenario includes a sample web MCP client. It runs as two programs in two terminal tabs.
 
@@ -195,13 +231,13 @@ Confirm the **NSO MCP tools** appear in the left-hand menu of the web UI:
 
 ![Streamlit web MCP client with NSO MCP tools listed on the left menu](assets/images/lab10/mcp-web-client-tools-menu.png)
 
-### Step 7: Drive NSO with natural language
+### Step 8: Drive NSO with natural language
 
 In the chat box, ask NSO about its devices in plain English (e.g. *"List the devices managed by NSO."*).
 
 ![Web MCP client answering a natural-language question about NSO devices](assets/images/lab10/mcp-web-client-natural-language.png)
 
-### Step 8: Change the MCP policy from `restricted` to `permit`
+### Step 9: Change the MCP policy from `restricted` to `permit`
 
 By default, for security reasons, the active MCP policy is **`restricted`** — it exposes only **11 tools**. Switch the default action to **`permit`** so more tools become available.
 

@@ -80,7 +80,7 @@ hostname
 *Expected output:*
 
 ```text
-linux-host
+xrd-host
 ```
 
 If the name differs, ask your facilitator—some environments use a different label, but the workflow is the same.
@@ -92,7 +92,7 @@ If the name differs, ask your facilitator—some environments use a different la
 
 ## Verification
 
-Confirm you are on **linux-host** and the shell is responsive. Run these in order in the same terminal:
+Confirm you are on **xrd-host** and the shell is responsive. Run these in order in the same terminal:
 
 ```bash
 hostname
@@ -105,7 +105,7 @@ pwd
 *Expected output:*
 
 ```text
-linux-host
+xrd-host
 cisco
 /home/cisco
 ```

@@ -32,7 +32,7 @@ By the end of this lab you will be able to:
 ## Prerequisites
 
 - [ ] [Lab 4: Configure Devices](04-configure-devices.md) completed — at least one successful **commit** exists so NSO generated rollback files.
-- [ ] You can open the NSO Web UI as **admin** and SSH from **linux-host** to **xr-1** (use the management IP from your lab sheet; examples use **198.51.100.2**).
+- [ ] You can open the NSO Web UI as **admin** and SSH from **linux-host** to **xr-1** (use the management IP from your lab sheet; examples use **172.30.0.2**).
 
 ## Procedure
 
@@ -64,7 +64,8 @@ SSH to **xr-1** and confirm the IPv4 address on the data interface is restored t
 <!-- lint-skip: no-output -->
 
 ```bash
-ssh admin@198.51.100.2
+ssh admin@172.30.0.2
+(admin@172.30.0.2) Password: (password = cisco123)
 ```
 
 *(Replace with your lab management address.)*
@@ -101,7 +102,7 @@ Confirm the same address from NSO (optional second check):
 
 ```bash
 source ~/NSO-INSTALL/ncsrc
-echo "show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address" | ncs_cli -u admin -C
+echo "show running-config devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address" | ncs_cli -u admin -C
 ```
 
 {{ expected_output(landmark="10.1.1.3") }}
@@ -130,4 +131,3 @@ address 10.1.1.3 255.255.255.0
 
 {{ common_errors_end() }}
 
-If you cannot find a suitable rollback file or loads fail repeatedly, restore the VM snapshot and retry.

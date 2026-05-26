@@ -63,7 +63,7 @@ Both devices should appear in **`ios-xr-devices`**.
 
 ![Configuration Editor showing the ncs:devices module](assets/images/lab07/webui-config-editor-devices.png)
 
-3. In the **template** tile, click **+**.
+3. In the **template** tile, click **+** add name 'set-dns'.
 
 ![Click the + button to create a new template](assets/images/lab07/webui-template-create-plus.png)
 
@@ -131,7 +131,8 @@ On **xr-1**, confirm DNS settings from the template:
 <!-- lint-skip: no-output -->
 
 ```bash
-ssh admin@198.51.100.2
+ssh admin@172.30.0.2
+(admin@172.30.0.2) Password: (password = cisco123)
 ```
 
 ```cli
