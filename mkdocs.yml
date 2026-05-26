@@ -121,7 +121,4 @@ extra:
   version:
     provider: mike
   nso_version: "6.5"          # stub — update when workbook targets a specific NSO release
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/daquezad/NSO-hands-on-session
   generator: false
