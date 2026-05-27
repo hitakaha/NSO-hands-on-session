@@ -205,7 +205,7 @@ bash ../ncs-{{ nso_version }}-cisco-iosxr-7.69-freetrial.signed.bin --skip-verif
 #### Copy the NED archive into the instance
 
 ```bash
-cp ncs-{{ nso_version }}-cisco-iosxr-69.tar.gz ~/NSO-INSTALL/nso-instance/packages/
+cp ncs-{{ nso_version }}-cisco-iosxr-7.69.tar.gz ~/NSO-INSTALL/nso-instance/packages/
 ```
 
 {{ expected_output(landmark="packages") }}
