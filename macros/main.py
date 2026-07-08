@@ -103,6 +103,22 @@ _JOURNEY_LABS: tuple[dict[str, object], ...] = (
         "desc": "Load bgpmgr, configure BGP via natural language",
         "intentional": False,
     },
+    {
+        "n": 12,
+        "file": "12-understanding-nso-mcp-policy.md",
+        "title": "NSO MCP — Understanding MCP policy",
+        "min": 30,
+        "desc": "Configure MCP policies by path/namespace",
+        "intentional": False,
+    },
+    {
+        "n": 13,
+        "file": "13-add-an-action-tool.md",
+        "title": "NSO MCP — Create a custom Action Tool",
+        "min": 60,
+        "desc": "Create a custom Action and publish it as a Tool",
+        "intentional": False,
+    },
 )
 
 _DURATION_RE = re.compile(r"^(\d+)\s*min$")

@@ -116,6 +116,8 @@ nav:
     - 9. RBAC Access Control: 09-rbac-access-control.md
     - 10. NSO MCP — Setup and First Client: 10-nso-mcp-setup.md
     - 11. NSO MCP — Service Models and BGP: 11-nso-mcp-services-bgp.md
+    - 12. NSO MCP — Understanding MCP policy: 12-understanding-nso-mcp-policy.md
+    - 13. NSO MCP — Create a custom Action Tool: 13-add-an-action-tool.md
 
 extra:
   version:
