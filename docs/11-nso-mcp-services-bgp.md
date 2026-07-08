@@ -69,7 +69,7 @@ Loading a service package adds extra tools to NSO MCP automatically. Clone the d
 ```bash
 cd
 cd ncs-run/packages
-git clone https://github.com/hitakaha/dcloud-bgpmgr
+git clone https://github.com/hitakaha/dcloud-bgpmgr.git
 ```
 
 Compile the package:
