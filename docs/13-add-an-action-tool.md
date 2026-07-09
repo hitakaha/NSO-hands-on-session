@@ -55,7 +55,8 @@ Run the following commands on Linux to create a custom package:
     ncs-make-package --service-skeleton python --action-example server-health
 
 Next, edit the package's YANG file to execute an external script.
-Open VSCode on the Desktop — it will automatically connect to the NSO server.
+Open VSCode — if you see "Authentication required," just click "Cancel." You may need to repeat it a few times.
+
 Edit `server-health.yang` located in `ncs-run/packages/server-health/src/yang`.
 
 ![yang-before](assets/images/lab13/01-yang-before.png)
